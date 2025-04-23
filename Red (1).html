@@ -1,0 +1,620 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wazongo Business - Data, Airtime, and Mobile Phones</title>
+    <style>
+        :root {
+            --primary: #4a6bff;
+            --secondary: #f8f9fa;
+            --dark: #343a40;
+            --light: #ffffff;
+            --success: #28a745;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: var(--light);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--dark);
+        }
+        
+        .usdt-code {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary), #6a11cb);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--light);
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .services {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--dark);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .service-image {
+            height: 180px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .service-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .phone-specs {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .phone-specs li {
+            margin-bottom: 8px;
+            position: relative;
+            list-style-type: none;
+        }
+        
+        .phone-specs li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .price-tag {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 15px 0;
+        }
+        
+        .service-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .service-button:hover {
+            background-color: #3a5bff;
+        }
+        
+        /* Registration Form Styles */
+        #register {
+            background-color: var(--secondary);
+            padding: 60px 0;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-container input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .form-container input[type="submit"] {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .form-container input[type="submit"]:hover {
+            background-color: #3a5bff;
+        }
+        
+        /* Contact Section Styles */
+        #contact {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        #contact p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        /* Rest of your existing CSS remains the same */
+        .how-it-works {
+            background-color: var(--secondary);
+            padding: 60px 0;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+        
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .step-description {
+            color: #666;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+        
+        .footer-links a {
+            display: block;
+            color: #bbb;
+            margin-bottom: 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--light);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .usdt-code {
+                margin-top: 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .steps {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Wazongo<span>Business</span></div>
+            <div class="usdt-code">*203*111*1576#</div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Your Reliable Data, Airtime & Mobile Phone Vendor</h1>
+            <p>Get instant MTN, Telecel, and AirtelTigo data bundles, airtime, and quality smartphones at competitive rates</p>
+            <a href="https://wa.me/233249639016" class="cta-button">Chat on WhatsApp</a>
+        </div>
+    </section>
+    
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Mobile Phones</h2>
+            <div class="services-grid">
+                <!-- Phone 1 -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://via.placeholder.com/300x180?text=Tecno+Spark+10C');"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">Tecno camon 30s</h3>
+                       
+                        <div class="price-tag">GHS 3,200</div>
+                        <a href="https://wa.me/233249639016?text=I%20want%20to%20buy%20Tecno%20Spark%2010C" class="service-button">Buy Now</a>
+                    </div>
+                </div>
+                
+                <!-- Phone 2 -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://via.placeholder.com/300x180?text=Samsung+Galaxy+A14');"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">Samsung Galaxy A06</h3>
+                      
+                        <div class="=price-tag">GHS 1750</div>
+                        <a href="https://wa.me/233249639016?text=I%20want%20to%20buy%20Samsung%20Galaxy%20A14" class="service-button">Buy Now</a>
+                    </div>
+                </div>
+                
+                <!-- Phone 3 -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://via.placeholder.com/300x180?text=iPhone+11');"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">Tecno pop8</h3>
+               
+                        <div class="price-tag">GHS 1,400</div>
+                        <a href="https://wa.me/233249639016?text=I%20want%20to%20buy%20iPhone%2011%20Refurbished" class="service-button">Buy Now</a>
+                    </div>
+                </div>
+                
+                <!-- Phone 4 -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://via.placeholder.com/300x180?text=Infinix+Hot+30i');"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">spark 30c</h3>
+                       
+                        <div class="price-tag">GHS 1750</div>
+                        <a href="https://wa.me/233249639016?text=I%20want%20to%20buy%20Infinix%20Hot%2030i" class="service-button">Buy Now</a>
+                    </div>
+                </div>
+                
+                <!-- Phone 5 -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://via.placeholder.com/300x180?text=Redmi+Note+12');"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">Camon40pro</h3>
+                        <div class="price-tag">GHS 3,750</div>
+                        <a href="https://wa.me/233249639016?text=I%20want%20to%20buy%20Redmi%20Note%2012" class="service-button">Buy Now</a>
+                    </div>
+                </div>
+                
+                <!-- Phone 6 -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://via.placeholder.com/300x180?text=Itel+S23');"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">Tecno pop9</h3>
+                        <div class="price-tag">GHS 1550</div>
+                        <a href="https://wa.me/233249639016?text=I%20want%20to%20buy%20Itel%20S23" class="service-button">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form Section -->
+    
+          
+          
+          
+          
+            <form action="#" method="POST" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email">
+              </div>
+
+              <div class="form-group">
+                <label for="business-name">Business Name:</label>
+                <input type="text" id="business-name" name="business-name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="business-location">Business Location:</label>
+                <input type="text" id="business-location" name="business-location" required>
+              </div>
+
+              <div class="form-group">
+                <label for="certificate">Upload Business Certificate form A (PDF):</label>
+                <input type="file" id="certificate" name="certificate" accept=".pdf" required>
+              </div>
+
+              <div class="form-group">
+                <label for="ghana-card">Upload Ghana Card (Front and Back in PDF):</label>
+                <input type="file" id="ghana-card" name="ghana-card" accept=".pdf" required>
+              </div>
+
+              <div class="form-group">
+                <label for="certificate2">Upload Business Certificate (PDF):</label>
+                <input type="file" id="certificate2" name="certificate2" accept=".pdf" required>
+              </div>
+
+              <div class="form-group">
+                <input type="submit" value="Submit Registration" class="submit-btn">
+              </div>
+            </form>
+            </div>
+            </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact">
+              <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="contact-container">
+                  <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p><strong>Phone:</strong> <a href="tel:+233249639016">+233 24 963 9016</a></p>
+                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/233249639016">Chat with us</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:wazongoventures26@gmail.com">wazongoventures26@gmail.com</a></p>
+                    <p><strong>Address:</strong> Near Custom Barrier, Bongo-Feo, Ghana</p>
+                    <p><strong>Working Hours:</strong> Monday-Saturday, 8:00 AM - 6:00 PM</p>
+                  </div>
+
+                  <div class="quick-contact">
+                    <h3>Quick Contact Form</h3>
+                    <form action="#" method="POST">
+                      <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                      </div>
+                      <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email">
+                      </div>
+                      <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Your Phone Number" required>
+                      </div>
+                      <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" required></textarea>
+                      </div>
+                      <div class="form-group">
+                        <input type="submit" value="Send Message" class="submit-btn">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- How It Works Section -->
+            <section class="how-it-works">
+              <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <div class="steps">
+                  <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Select Product</h3>
+                    <p class="step-description">Choose from our wide range of products including phones, data bundles, and airtime.</p>
+                  </div>
+
+                  <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Make Payment</h3>
+                    <p class="step-description">Pay securely via Mobile Money or other available payment methods.</p>
+                  </div>
+
+                  <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Receive Instantly</h3>
+                    <p class="step-description">Get your product delivered instantly or arrange for pickup.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <footer>
+              <div class="container">
+                <div class="footer-content">
+                  <div class="footer-section">
+                    <h3 class="footer-title">Wazongo Business</h3>
+                    <p>Your reliable partner for all telecom and mobile device needs. Fast, affordable, and trustworthy service.</p>
+                    <p><strong>USSD Code:</strong> *203*111*1576#</p>
+                  </div>
+
+                  <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <div class="footer-links">
+                      <a href="#services">Mobile Phones</a>
+                      <a href="#register">Agent Registration</a>
+                      <a href="#contact">Contact Us</a>
+                      <a href="https://vendor.muviin.co/#/merchant/1576-Wazongogig">Muviin Vendor Page</a>
+                    </div>
+                  </div>
+
+                  <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="footer-links">
+                      <a href="tel:+233249639016">+233 24 963 9016</a>
+                      <a href="mailto:wazongoventures26@gmail.com">wazongoventures26@gmail.com</a>
+                      <a href="https://wa.me/233249639016">WhatsApp Chat</a>
+                      <p>Near Custom Barrier, Bongo-Feo, Ghana</p>
+                    </div>
+                  </div>
+
+                  <div class="footer-section">
+                    <h3 class="footer-title">Business Hours</h3>
+                    <p>Monday - Saturday: 8:00 AM - 6:00 PM</p>
+                    <p>Sunday: Closed</p>
+                  </div>
+                </div>
+
+                <div class="copyright">
+                  &copy; 2023 Wazongo Business. All rights reserved.
+                </div>
+              </div>
+            </footer>
+  <title></title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+  <title></title>
+</head>
+
+<body>
+
+</body>
+
+</html>
